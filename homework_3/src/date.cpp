@@ -26,9 +26,26 @@ int Date::getYear() const noexcept{
 }
 Date Date::operator-(const Date& date){
   Date temp_date;
+
+  if(this->Year-date.Year<0)
+  {
+    temp_date.Month = date.Month - this->Month;
+    temp_date.Day = date.Day - this->Day;
+  }else {
+    temp_date.Month =  this->Month - date.Month;
+    temp_date.Day = this->Day - date.Day;
+  }
+
   temp_date.Year = abs(this->Year-date.Year);
-  temp_date.Month = abs(this->Month-date.Month);
-  temp_date.Day = abs(this->Day-date.Day);
+
+  if(temp_date.Month < 0){
+    temp_date.Year -=1;
+    temp_date.Month +=12;
+  }
+  if(temp_date.Day < 0){
+      temp_date.Month -=1;
+      temp_date.Day +=30;
+  }
   temp_date.Formatting = this->Formatting;
   cout<<"differences "<<temp_date.Day<<" day's "<<temp_date.Month
                       <<" month's "<<temp_date.Year<<" year's "<<endl;

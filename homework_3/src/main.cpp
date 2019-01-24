@@ -17,8 +17,8 @@ TEST(date, minus_check){
   Date date_result;
   date_result = date_1 - date_2;
   EXPECT_EQ(1,date_result.getDay());
-  EXPECT_EQ(1,date_result.getMonth());
-  EXPECT_EQ(1,date_result.getYear());
+  EXPECT_EQ(11,date_result.getMonth());
+  EXPECT_EQ(0,date_result.getYear());
 }
 int main(int argc, char *argv[]){
 
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]){
   cout<<date_2;
   Date result_date;
   result_date = date_1 - date_2;
-  
+
   ::testing::InitGoogleTest(&argc, argv);
    return RUN_ALL_TESTS();
 }
